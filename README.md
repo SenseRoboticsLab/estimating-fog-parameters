@@ -153,7 +153,7 @@ python3 ./visualisation/plot_beta_vs_frame_sdirf.py --result_path ./results --se
 
 # Open-sourced code we used to compare our method with
 ## [Non-local Image Dehazing](https://openaccess.thecvf.com/content_cvpr_2016/papers/Berman_Non-Local_Image_Dehazing_CVPR_2016_paper.pdf)
-We adapted this [implementation]((https://github.com/danaberman/non-local-dehazing)) to radiance images and used it to generate the atmospheric light estimates reported under the caption “Berman’s” in Fig. 13 of the paper.
+We adapted this [implementation](https://github.com/danaberman/non-local-dehazing) to radiance images and used it to generate the atmospheric light estimates reported under the caption “Berman’s” in Fig. 13 of the paper.
 
 ## [Single Image Haze Removal Using Dark Channel Prior](http://ieeexplore.ieee.org/document/5206515/)
 We adapted this [implementation](https://github.com/sakaridis/fog_simulation-SFSU_synthetic/tree/master/source/Dehazing/Dark_channel_prior) to radiance images and used it to generate the atmospheric light estimates reported under the captions “Li’s” and “Li’s mod” in Fig. 13 of the paper.
