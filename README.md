@@ -1,14 +1,23 @@
 # Estimating Fog Parameters from a Sequence of Stereo Images
 This repository provides the implementation of our method for estimating and dynamically updating the parameters of the atmospheric scattering model from a sequence of stereo foggy images.
 
-![](assets/method.png)
-
 This work has been accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI) in 2025.
 
-Paper links
+Paper link [Coming soon]
 
-[![IEEE Xplore](https://img.shields.io/badge/IEEE\_Xplore-Paper-blue)]()
-[![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)]()
+<!-- [![IEEE Xplore](https://img.shields.io/badge/IEEE\_Xplore-Paper-blue)]()
+[![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)]() -->
+
+## Overview of our three-step method
+![](assets/method.png)
+1. Representation of a local map as a bipartite graph that describes which frames observe which landmarks
+2. Generation of distance-radiance pairs, where distance is computed using the camera's pose and the landmark's 3D position, and radiance is computed by applying gamma expansion to the intensity value of the landmark's corresponding 2D feature point in the frame
+3. Parameter estimation via optimisation, whose problem is represented as a hypergraph, where a vertex represents an optimisation variable (or a group of variables), and an edge  
+represents an observation error.
+
+Note that these figures are *illustrative*.
+In reality, a local map typically contains many more landmarks, with each landmark being observed in many more frames.
+The graphs are thus much larger in practice.
 
 # The Stereo Driving In Real Fog (SDIRF) dataset
 As part of this research, we collected the Stereo Driving in Real Fog (SDIRF) dataset, which was extensively used in our experiments and evaluation.
@@ -22,7 +31,7 @@ With the following features, SDIRF is a first-of-its-kind dataset.
 
 Dataset link: [Coming soon]
 
-<!-- [![](https://img.shields.io/badge/Dataset-Link-green)]() -->
+<!-- [![](https://img.shields.io/badge/SDIRF-Data-green)]() -->
 
 ![](assets/thick_1.gif)
 ![](assets/thin_1.gif)
@@ -63,51 +72,57 @@ This will create **libORB_SLAM2.so** in *lib* folder and the following two execu
 - **stereo_sdirf**
 
 # 2. Preparing data
-We provide 
+We illustrate how to prepare synthetic foggy images (see Section V-A of our paper) and real foggy images for evaluation, using VKITTI2 and SDIRF, respectively, as examples.
 
 ## VKITTI2
+We provide a sample foggy sequence of VKITTI2 that you can [download]() for quick testing.
+Download and unzip this file, and place the resulting folder to `YourFoggyVKITTI2Folder`.
+Assume the folder structure is as follows:
+```
+YourFoggyVKITTI2Folder
+  └── R00_FogThin
+```
 
 ## SDIRF
+Download and unzip files of foggy sequences of SDIRF, and place the resulting folders to `YourSDIRFFolder`.
+Assume the folder structure is as follows:
+```
+YourSDIRFFolder
+  ├── P00_FogThick
+  ├── ...
+  ├── P24_FogThin
+  ├── Q00_FogThick
+  ├── ...
+  ├── Q25_FogThick
+  └── R00_FogThin  
+```
 
 # 3. Running the examples
 ## VKITTI2
-Execute the following commands to run on a foggy sequence of VKITTI2.
+Execute the following command to run on this foggy sequence of VKITTI2.
+```
+./Examples/Stereo/stereo_vkitti2 ./Vocabulary/ORBvoc.txt ./Examples/Stereo/VKITTI2.yaml YourFoggyVKITTI2Folder/P11_FogThin/images_colour/
+```
 The arguments follow the same convention as in ORB-SLAM2.
-The very last argument is the combination of gain and exposure of the corresponding SDIRF sequence, which can be obtained from Table III in the supplementary material.
-You need to replace `YourVKITTI2Folder` with the actual full path to your data folder.
-
-```
-./Examples/Stereo/stereo_sdirf ./Vocabulary/ORBvoc.txt ./Examples/Stereo/SDIRF.yaml YourVKITTI2Folder/P11_FogThin/images_colour/ G0E3
-```
 
 ## SDIRF
-Execute one of the following commands to run on a **foggy** sequence of SDIRF.
+As an example, execute the following command to run on the `P00_FogThick` sequence of SDIRF.
+```
+./Examples/Stereo/stereo_sdirf ./Vocabulary/ORBvoc.txt ./Examples/Stereo/SDIRF.yaml YourSDIRFFolder/P00_FogThick/images_colour/ G5E10
+```
 The first three arguments follow the same convention as in ORB-SLAM2.
 The very last argument is the combination of gain and exposure of the corresponding SDIRF sequence, which can be obtained from Table III in the supplementary material.
-You need to replace `YourDataFolder` with the actual full path to your data folder.
-
-```
-./Examples/Stereo/stereo_sdirf ./Vocabulary/ORBvoc.txt ./Examples/Stereo/SDIRF.yaml YourSDIRFFolder/P11_FogThin/images_colour/ G0E3
-```
-
-```
-./Examples/Stereo/stereo_sdirf ./Vocabulary/ORBvoc.txt ./Examples/Stereo/SDIRF.yaml YourSDIRFFolder/Q04_FogThick/images_colour/ G20E15
-```
-
-```
-./Examples/Stereo/stereo_sdirf ./Vocabulary/ORBvoc.txt ./Examples/Stereo/SDIRF.yaml YourSDIRFFolder/R00_FogThick/images_colour/ G1E1
-```
 
 # 4. Interpreting the results
 Estimation results will be appended to txt files in the *results* folder on-the-fly.
-There are four of them:
+There are three (or four if running a SDIRF sequence) of them:
 
 | File name | Method                                                       |
 | --------- |--------------------------------------------------------------|
 | `OthersLi-AModeMax-PreservePositiveBetaFalse.txt` | Li's method                                                  |
 | `OthersLi-AModeMedian-PreservePositiveBetaTrue.txt` | Li's modified method                                         |
 | `Ours-Stage2-Weightproductthenuniform-IntensityModeraw-Optimiserceres_tight.txt` | Our method                                                   |
-| `Ours-Stage2-Weightproductthenuniform-IntensityModeraw-Optimiserceres_tight-WoGc.txt` | Our method (without gamma correction, i.e., using intensity) |
+| `Ours-Stage2-Weightproductthenuniform-IntensityModeraw-Optimiserceres_tight-WoGc.txt` | Our method without gamma correction, i.e., using intensity (only generated if running a SDIRF sequence) |
 
 In each file, each row corresponds to an update of the fog parameters.
 
@@ -137,11 +152,14 @@ python3 ./visualisation/plot_beta_vs_frame_sdirf.py --result_path ./results --se
 ```
 
 # Open-sourced code we used to compare our method with
-- "Non-local Image Dehazing" by Berman et al. [GitHub Repository](https://github.com/danaberman/non-local-dehazing).
-We adapted their code to radiance images and used it to generate the atmospheric light estimates reported under the caption “Berman’s” in Fig. 13 of the paper.
-- "Single Image Haze Removal Using Dark Channel Prior" by He et al. [GitHub Repository](https://github.com/sakaridis/fog_simulation-SFSU_synthetic/tree/master/source/Dehazing/Dark_channel_prior).
-We adapted their code to radiance images and used it to generate the atmospheric light estimates reported under the captions “Li’s” and “Li’s mod” in Fig. 13 of the paper.
+## [Non-local Image Dehazing](https://openaccess.thecvf.com/content_cvpr_2016/papers/Berman_Non-Local_Image_Dehazing_CVPR_2016_paper.pdf)
+We adapted this [implementation]((https://github.com/danaberman/non-local-dehazing)) to radiance images and used it to generate the atmospheric light estimates reported under the caption “Berman’s” in Fig. 13 of the paper.
+
+## [Single Image Haze Removal Using Dark Channel Prior](http://ieeexplore.ieee.org/document/5206515/)
+We adapted this [implementation](https://github.com/sakaridis/fog_simulation-SFSU_synthetic/tree/master/source/Dehazing/Dark_channel_prior) to radiance images and used it to generate the atmospheric light estimates reported under the captions “Li’s” and “Li’s mod” in Fig. 13 of the paper.
 We also used it to generate the defogged images in the top four rows of Fig. 14 of the paper with known corresponding atmospheric light that is shown in Fig. 13.
+
+We thank them for making their code open source.
 
 # To-Dos
 - [ ] Add code
