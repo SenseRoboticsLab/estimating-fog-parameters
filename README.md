@@ -205,7 +205,7 @@ Please consider citing our work if you find our work useful for your researach.
 ```
 
 # License
-This project is released under the MIT License.
+This project is released under GPL-3.0.
 
 See the [LICENSE](/LICENSE) file for details.
 
