@@ -5,7 +5,8 @@ This work has been accepted by IEEE Transactions on Pattern Analysis and Machine
 
 [![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Paper-blue)](https://ieeexplore.ieee.org/abstract/document/11218959)
 [![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Supplementary_Material-blue)](https://ieeexplore.ieee.org/ielx8/34/4359286/11218959/supp1-3626275.pdf?arnumber=11218959)
-<!-- [![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)]() -->
+
+[![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2511.20865)
 
 ## Overview of our three-step method
 ![](assets/method.png)
@@ -190,7 +191,7 @@ We adapted this [implementation](https://github.com/sakaridis/fog_simulation-SFS
 We also used it to generate the defogged images in the top four rows of Fig. 14 of the paper with known corresponding atmospheric light that is shown in Fig. 13.
 
 # Citation
-Please consider citing our work if you find our work useful for your researach.
+Please consider citing our work if you find it useful for your researach.
 ```bib
 @article{ding2025estimating,
   author={Ding, Yining and Mota, João F. C. and Wallace, Andrew M. and Wang, Sen},
