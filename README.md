@@ -3,8 +3,8 @@ This repository provides the implementation of our method for estimating and dyn
 
 This work has been accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI) in 2025.
 
-[![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Paper-blue)](https://ieeexplore.ieee.org/abstract/document/11218959)
-[![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Supplementary_Material-blue)](https://ieeexplore.ieee.org/ielx8/34/4359286/11218959/supp1-3626275.pdf?arnumber=11218959)
+[![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Paper-blue)](https://ieeexplore.ieee.org/document/11218959)
+[![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Supplementary_Material-blue)](https://ieeexplore.ieee.org/document/11218959/media#media)
 
 [![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2511.20865)
 
