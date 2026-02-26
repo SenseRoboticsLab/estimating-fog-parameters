@@ -191,16 +191,17 @@ We adapted this [implementation](https://github.com/sakaridis/fog_simulation-SFS
 We also used it to generate the defogged images in the top four rows of Fig. 14 of the paper with known corresponding atmospheric light that is shown in Fig. 13.
 
 # Citation
-Please consider citing our work if you find it useful for your researach.
+Please consider citing our work if you find it useful for your research.
 ```bib
 @article{ding2025estimating,
+  title={Estimating Fog Parameters From a Sequence of Stereo Images}, 
   author={Ding, Yining and Mota, João F. C. and Wallace, Andrew M. and Wang, Sen},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
-  title={Estimating Fog Parameters from a Sequence of Stereo Images}, 
-  year={2025},
-  volume={},
-  number={},
-  pages={1-16},
+  year={2026},
+  volume={48},
+  number={3},
+  pages={2154-2169},
+  publisher={IEEE}
   doi={10.1109/TPAMI.2025.3626275}
 }
 ```
