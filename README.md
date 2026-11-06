@@ -1,12 +1,12 @@
 # Estimating Fog Parameters from a Sequence of Stereo Images
 This repository provides the implementation of our method for estimating and dynamically updating the parameters of the atmospheric scattering model from a sequence of stereo foggy images.
 
-This work has been accepted by IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI) in 2025.
+This work was accepted by *IEEE Transactions on Pattern Analysis and Machine Intelligence* in October 2025, and published in March 2026.
 
 [![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Paper-blue)](https://ieeexplore.ieee.org/document/11218959)
 [![IEEEXplore](https://img.shields.io/badge/IEEE_Xplore-Supplementary_Material-blue)](https://ieeexplore.ieee.org/document/11218959/media#media)
-
 [![arXiv paper](https://img.shields.io/badge/arXiv-Paper-red)](https://arxiv.org/abs/2511.20865)
+[![Dataset website](https://img.shields.io/badge/Dataset-Website-black)](https://tedyiningding.github.io/sdirf-dataset/)
 
 ## Overview of our three-step method
 ![](assets/method.png)
@@ -29,7 +29,7 @@ With the following features, SDIRF is a first-of-its-kind dataset.
 - Includes camera photometric parameters calibrated in a controlled lab environment, which are essential for accurate application of the atmospheric scattering model
 - Also includes clear-weather counterparts of the same routes recorded under overcast conditions, providing valuable data for companion work in image defogging and depth reconstruction.
 
-Dataset link: [Coming soon]
+For more information about SDIRF and the download link, please visit: https://tedyiningding.github.io/sdirf-dataset/
 
 <!-- [![](https://img.shields.io/badge/SDIRF-Data-green)]() -->
 
@@ -210,9 +210,3 @@ Please consider citing our work if you find it useful for your research.
 This project is released under GPL-3.0.
 
 See the [LICENSE](/LICENSE) file for details.
-
-# To-Dos
-- [x] Add code
-- [x] Add links to the paper
-- [x] Add citation section
-- [ ] Release the SDIRF dataset
